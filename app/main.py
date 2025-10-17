@@ -7,10 +7,10 @@ def cache(func: Callable) -> Callable:
     def inner(*args) -> Any:
         if args in used:
             print("Getting from cache")
-            return used[*args]
+            return used[args]
 
         else:
             print("Calculating new result")
-            used[*args] = func(*args)
-            return used[*args]
+            used[args] = func(*args)
+            return used[args]
     return inner
